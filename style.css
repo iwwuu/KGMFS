@@ -1,0 +1,253 @@
+@import url('https://fonts.cdnfonts.com/css/jetbrains-mono-2');
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    background-color: black;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+h3 {
+    font-weight: 100;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+h3 a:hover,
+h2 a:hover {
+    text-decoration: line-through #ffffff3d 1.5em;
+}
+
+mock-file-system>div {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 10px;
+    color: white;
+    box-sizing: border-box;
+    animation: fadein 0.8s;
+}
+
+#image-view,
+#music-view {
+    display: none;
+    padding: 0px 30px;
+    transition: opacity 400ms;
+    animation: fadein 400ms;
+}
+
+#image-view {
+    flex-direction: row;
+}
+
+#music-view {
+    flex-direction: column;
+}
+
+#file-view {
+    transition: opacity 400ms;
+}
+
+mock-file[data-type],
+#image-view h3,
+#music-view h3 {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+#index-links a:hover,
+#image-view h3:hover {
+    text-decoration: line-through #ffffff3d 1.5em;
+}
+
+mock-file:hover {
+    background-color: #ffffff3d;
+}
+
+#file-view>div {
+    max-width: 900px;
+    width: 85vw;
+    position: relative;
+}
+
+#file-view .file-line,
+#file-view h2 {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.left-delta,
+.right-delta {
+    transform: rotate(90deg);
+    font-size: 28px;
+    font-weight: 100;
+    color: #3d3d3d;
+    padding: 20px;
+}
+
+.left-delta {
+    transform: rotate(-90deg);
+}
+
+.left-delta:hover,
+.right-delta:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.delta-small-screen {
+    display: none;
+}
+
+.files-image-container h3 {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.files-image-container img {
+    max-width: 600px;
+    /* hard coded width to fix edge broken img bug */
+    width: 76.77vw;
+    aspect-ratio: 1 / 1;
+    display: block;
+    pointer-events: none;
+    transition: opacity 400ms;
+}
+
+.file-line {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0;
+    padding: 2px;
+}
+
+mock-file {
+    display: flex !important;
+}
+
+@media (max-width: 600px) {
+    .left-delta {
+        display: none;
+        padding: 10px;
+        margin-right: 30%;
+    }
+
+    .right-delta {
+        display: none;
+        padding: 10px;
+        margin-left: 30%;
+    }
+
+    .delta-small-screen {
+        display: inline-block;
+    }
+
+    main {
+        padding: 40px 30px;
+    }
+
+    .files-image-container img {
+        /* hard coded width to fix edge broken img bug */
+        width: 89.51vw;
+    }
+}
+
+@media (min-width: 550px) {
+    .file-line h3:nth-child(2):before {
+        content: '';
+        background: repeating-linear-gradient(to right, white, white 1px, transparent 1px, transparent 8px);
+        height: 1px;
+        flex-grow: 1;
+        display: inline-block;
+        margin-top: 1em;
+    }
+
+    .file-line h3:nth-child(2) {
+        flex-grow: 1;
+        text-align: right;
+        display: flex;
+        color: white;
+    }
+
+    .file-line {
+        display: flex !important;
+        flex-direction: row;
+    }
+}
+
+.controls a {
+    margin: 5px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.fa-play {
+    font-size: 15px !important;
+    transform: scale(1, 1.1) translateY(-0.5px);
+}
+
+#marquee-wrapper {
+    width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px 10px;
+    position: relative;
+}
+
+#marquee-wrapper:hover {
+    background-color: #ffffff3d;
+    cursor: pointer;
+}
+
+#music-title {
+    display: inline-block;
+    text-align: left;
+}
+
+.scrolling-left {
+    animation: scroll-left 15s linear infinite;
+}

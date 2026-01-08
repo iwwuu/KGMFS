@@ -281,10 +281,14 @@ isDocumentReady(() => {
         });
         
         marqueeWrapper.addEventListener("mouseenter", () => { 
-            document.querySelector(".scrolling-left").style.animationPlayState = "paused"
+            if (!isPaused) {
+                document.querySelector(".scrolling-left").style.animationPlayState = "paused"
+            }
         });
         marqueeWrapper.addEventListener("mouseleave", () => { 
-            document.querySelector(".scrolling-left").style.animationPlayState = "running"
+            if (!isPaused) {
+                document.querySelector(".scrolling-left").style.animationPlayState = "running"
+            }
         });
     }
 
